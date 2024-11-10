@@ -87,3 +87,53 @@ onTap: () {
 18. Setelah itu, buat Container yang menyimpan Icon dan Text dengan menggunakan atribut dari item yaitu item.icon untuk menampilkan icon dan item.name untuk menampilkan nama
 19. Integrasikan semua class untuk button dan card tadi pada class MyHomePage pada Widget build() agar seluruh elemen dapat ditampilkan dalam aplikasi
 20. Lakukan `flutter analyze `untuk memeriksa apakah ada error atau isu pada kode aplikasi
+
+## Tugas 8
+
+###### 1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+
+Const di flutter digunakan untuk membuat sebuah widget, variabel, atau value yang immutable. Widget atau value yang menggunakan const akan dibuat satu kali selama lifecycle aplikasi sehingga akan meningkatkan performa aplikasi dan menghemat memori. Selain dua keuntungan tadi, dengan menggunakan const, manajemen widget tree menjadi efisien dan kontruktor konstan menunjukkan dengan jelas tujuan membuat object sehingga akan meningkatkan readability dan maintainability kode program dan memperjelas flow data pada aplikasi.
+
+Const baik digunakan pada saat membuat immutable data object, seperti warna, konfigurasi, dan data-data yang tidak akan diubah selama lifecycle aplikasi. Contoh `const Color myPrimaryBlue = const Color(0xFF89CFF0);`. Selain itu, const baik digunakan pada saat pre-defined values, seperti API endpoint atau nilai statik. Contoh `const String myApi = const "https://my.api.com";`. Const juga baik digunakan untuk mengomptimalkan widget trees. Widget yang menggunakan const dianggap sudah dibuild sebelumnya dan akan digunakan kembali selama proses rebuild apabila referensinya tidak berubah sehingga terhindar dari pembuatan widget yang tidak perlu dan meningkatkan performa dari widget trees. Contoh `final myText = const Text('Hello World');`. Const sebaiknya tidak digunakan ketika membuat dynamic data dan network calls, contohnya user input atau data yang difetch dari sebuah network calls.
+
+###### 2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+Row digunakan untuk menempatkan widget secara horizontal atau ke samping pada layar, sedangkan Column digunakan untuk menempatkan widget secara vertikal atau ke bawah pada layar.
+
+Contoh implementasi Row:
+
+```
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: <Widget>[
+    Text('Home'),
+    Text('About'),
+    Text('Menu'),
+  ],
+)
+```
+
+Contoh implementasi Column:
+
+```
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+    Text('Item ke-1'),
+    Text('Item ke-2'),
+    Text('Item ke-3'),
+  ],
+)
+```
+
+###### 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Pada tugas ini, saya hanya menggunakan elemen input TextFormField pada halaman tambah produk. Banyak elemen input flutter yang lain yang tidak digunakan pada tugas ini, seperti DropdownButton, Checkbox, Radio, Slider, DatePicker, TimePicker, RangeSlider, FilePicker, dan lain sebagainya.
+
+###### 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Saya mengatur tema aplikasi Flutter agar konsisten dengan menggunakan `ThemeData` dalam `MaterialApp`. Pada file main.dart, saya mendefinisikan tema global untuk aplikasi menggunakan `ThemeData` dan `ColorScheme`. Dengan cara ini, saya bisa menentukan warna utama (primarySwatch) yaitu indigo dan warna aksen (secondary) yaitu indigo[900]. Selain itu, saya menggunakan `useMaterial3: true` untuk mendapatkan tampilan Material Design versi terbaru. Dengan menggunakan tema global ini, saya memastikan semua widget yang sesuai dengan warna primary atau secondary akan mengikuti skema warna yang telah ditentukan tanpa perlu mendefinisikan warna tersebut berulang kali pada setiap widget.
+
+###### 5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+Untuk menangani navigasi pada aplikasi Flutter dengan banyak halaman, saya menggunakan `Navigator` dengan `pushReplacement` dan `push`. Saya menggunakan pushReplacement untuk menggantikan halaman saat ini dengan halaman baru tanpa menumpuk halaman sebelumnya di stack. Misalnya, ketika saya memilih "Halaman Utama" di lrft drawer, saya menggunakan pushReplacement untuk memastikan halaman utama menggantikan halaman yang sedang dibuka. Saya menggunakan `push` untuk fitur "Tambah Produk", yang akan menambahkan halaman baru di atas halaman yang sedang dibuka dengan menggunakan stack. Dengan cara ini, saya dapat kembali ke halaman sebelumnya menggunakan `pop`. Selain itu, saya menggunakan sebuah drawer yang akan muncul disebelah kiri aplikasi ketika icon hamburger diklik untuk memberikan navigasi ke halaman utama dan halaman tambah prooduk.
