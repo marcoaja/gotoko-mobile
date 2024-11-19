@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gotoko/screens/list_productentry.dart';
 import 'package:gotoko/screens/menu.dart';
 import 'package:gotoko/screens/productentry_form.dart';
 
@@ -60,6 +61,17 @@ class LeftDrawer extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => ProductEntryFormPage()
                   ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_bag_outlined),
+            title: const Text('Daftar Product'),
+            onTap: () {
+              // Route menu ke halaman Product
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductEntryPage()),
+              );
             },
           ),
         ],
